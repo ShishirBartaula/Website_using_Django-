@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+app page
+{% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-3 gap-4">
+
+  {% for chai in chais %}
+    <div class="Chai_Item">
+      {% if chai.image %}
+        <img class="p-4" src="{{ chai.image.url }}" alt="{{ chai.name }}">
+      {% endif %}
+      <h3>{{ chai.name }}</h3>
+
+<a href="{% url 'chai_detail' chai.id %}">  <!--url link so that open next page
+  chai_detail is the name from urls.py-->
+
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+{{chai.type}} - {{chai.id}}
+
+</button>
+
+    </a>
+
+    </div>
+  {% endfor %}
+
+</div>
+{% endblock %}

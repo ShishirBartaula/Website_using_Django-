@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{%load static%}
+
+<!--if we use static keyworwd we need to load in top of the html file-->
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% endcomment %}
+    {% block title %}
+    Home page
+    {% endblock %}
+    {% comment %} <link rel="stylesheet" href="{%static 'style.css' %}"> {% endcomment %}
+    <!-- Django does not serve static files directly by filename(style.css).
+{static %} tells Django where the file actually lives and how to serve it.-->
+
+<!-- HTML comments do NOT protect Django template code.
+Django processes templates before the browser sees the HTML. -->
+
+<!-- thats why django tries to execute eventhoug it is inside the HTml comment i.e.{percentage static %}-->
+{% comment %} 
+</head>
+<body> {% endcomment %}
+    {% block content %}
+    <h1 class="bg-yellow-500 text-3xl">hello</h1>
+     {% endblock %}
+   
+    <!-- i need to go to setting.py in TEMPLATES [DIRS:['templates']]
+     -->
+{% comment %} <h1>if you enter /chai in above urls you get apps templates</h1>
+
+    <a href="{% url 'privacy' %}">privacy</a>
+    <a href="{% url 'about' %}">About</a>
+    <a href="{% url 'contact' %}">Contact</a>
+</body>
+</html> {% endcomment %}

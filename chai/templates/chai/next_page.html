@@ -1,0 +1,17 @@
+ {% extends "layout.html" %}
+{% load  static  %}
+   {% block title %}
+ Detail page 
+    {% endblock %}
+
+    {% block content %}
+    <h1>chai detail page</h1>
+    
+
+    <h2> {{chai.name}}</h2>
+    <h3>{{chai.description}}</h3>
+
+ <h1>{{chai.price}}</h1?}} 
+
+<img src="{% static 'chai/image1.jpg' %}" alt="background image">
+     {% endblock %}

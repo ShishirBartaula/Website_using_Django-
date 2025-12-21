@@ -1,0 +1,11 @@
+/* go to setting.py "import os on top and implement  static directories to tell django where to find  my css,js,images are  */
+
+body{
+    background-color:beige;
+    color:rgb(93, 145, 15)
+}
+
+h1{
+    text-align: center;
+    font-size: 2em;
+}
