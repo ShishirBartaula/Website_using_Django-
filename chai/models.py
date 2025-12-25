@@ -20,7 +20,9 @@ class chaiVarity(models.Model):
     #best idea is make new class for price if you want to add more features like discount, tax etc.
 
     date_added=models.DateTimeField(default=timezone.now)
+
     type=models.CharField(max_length=20, choices=CHAI_TYPE_CHOICES)
+
     rating = models.PositiveIntegerField(null=True)  #average rating based on user reviews
     description=models.TextField(default='')
 
@@ -30,9 +32,10 @@ class chaiVarity(models.Model):
 
 
 #review model to store user reviews for each chai variety
-#one-to-many relationship between chaiVarity and chiaReview
+#many-to-one relationship between chaiVarity and chiaReview
 class chaiReview(models.Model):
     chai_variety = models.ForeignKey(chaiVarity, on_delete=models.CASCADE, related_name='reviews')
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField()  #assuming rating is from 1 to 5
     comment = models.TextField()
@@ -48,7 +51,9 @@ class chaiReview(models.Model):
 class store(models.Model):   
      name = models.CharField(max_length=100)
      location = models.CharField(max_length=255)
+
      chai_varieties = models.ManyToManyField(chaiVarity, related_name='stores')  
+
      opening_hours = models.CharField(max_length=100)
      contact_info = models.CharField(max_length=100)
 
@@ -62,6 +67,7 @@ class store(models.Model):
 class chaiCertification(models.Model):
     chai_certification=models.OneToOneField(chaiVarity, on_delete=models.CASCADE,
                                                  related_name='certification')
+    
     certificate_number = models.CharField(max_length=100)
     issued_date = models.DateTimeField(default=timezone.now)
     valid_until = models.DateField()

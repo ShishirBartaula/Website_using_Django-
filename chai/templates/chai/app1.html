@@ -1,31 +1,39 @@
 {% extends "layout.html" %}
 
 {% block title %}
-app page
+App Page
 {% endblock %}
 
 {% block content %}
-<div class="grid grid-cols-3 gap-4">
+<div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
-  {% for chai in chais %}
-    <div class="Chai_Item">
-      {% if chai.image %}
-        <img class="p-4" src="{{ chai.image.url }}" alt="{{ chai.name }}">
-      {% endif %}
-      <h3>{{ chai.name }}</h3>
+        {% for chai in chais %}
+        <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 overflow-hidden text-center">
 
-<a href="{% url 'chai_detail' chai.id %}">  <!--url link so that open next page
-  chai_detail is the name from urls.py-->
+            {% if chai.image %}
+            <img 
+                src="{{ chai.image.url }}" 
+                alt="{{ chai.name }}"
+                class="w-full h-48 object-cover"
+            >
+            {% endif %}
 
-<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-{{chai.type}} - {{chai.id}}
+            <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                    {{ chai.name }}
+                </h3>
 
-</button>
+                <a href="{% url 'chai_detail' chai.id %}">
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition">
+                        {{ chai.type }} · ID {{ chai.id }}
+                    </button>
+                </a>
+            </div>
 
-    </a>
+        </div>
+        {% endfor %}
 
     </div>
-  {% endfor %}
-
 </div>
 {% endblock %}

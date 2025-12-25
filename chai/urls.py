@@ -8,5 +8,5 @@ urlpatterns = [
      path('',views.all_chai,name="all_chai"),
 #views ma function ko name all_chai x so
 path('<int:chai_id>/',views.chai_detail,name="chai_detail"),
-
+path('chai_stores/',views.chai_store_view,name="chai_stores"), #newly added view for chai store
 ]
